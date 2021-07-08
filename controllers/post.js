@@ -17,7 +17,7 @@ module.exports = {
 async function showPost(req, res) {
    const query = req.query.uid ? {createdBy: req.query.uid} : {};
      try {
-        res.json(await Post.find(query).populate('createdBy'));
+        res.json(await Post.find(query).populate('createdBy')).populate('comments.createdBy');
      } catch (error) {
         console.log(error)
          res.status(400).json(error);
@@ -75,6 +75,7 @@ async function updateLikes(req, res) {
 async function addComments(req, res) {
    try {
       const post = await Post.findOne({_id: req.params.id});
+      req.body.createdBy = req.user._id;
       post.comments.push(req.body);
       await post.save();
       res.json({msg: "success"});
