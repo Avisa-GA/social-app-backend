@@ -27,4 +27,7 @@ router.post('/post/:id/like',isAuthenticated, postCtrl.addLikes);
 // Post / disLike
 router.post('/post/:id/dislike',isAuthenticated, postCtrl.updateLikes);
 
+// Post / comments
+router.post('/post/:id/comment',isAuthenticated, postCtrl.addComments);
+
 module.exports = router

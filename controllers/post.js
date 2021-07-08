@@ -8,7 +8,8 @@ module.exports = {
      deletePost,
      createPost, 
      addLikes,
-     updateLikes
+     updateLikes, 
+     addComments
 };
 
 
@@ -66,6 +67,17 @@ async function updateLikes(req, res) {
       post.likes.pull(user._id); 
       await post.save(); // save changes to database
       res.json({msg: "success" }); // send a generic message back 
+   } catch (err) {
+      res.status(400).json(err);
+   }
+}
+
+async function addComments(req, res) {
+   try {
+      const post = await Post.findOne({_id: req.params.id});
+      post.comments.push(req.body);
+      await post.save();
+      res.json({msg: "success"});
    } catch (err) {
       res.status(400).json(err);
    }
