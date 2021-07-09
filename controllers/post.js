@@ -17,7 +17,7 @@ module.exports = {
 async function showPost(req, res) {
    const query = req.query.uid ? {createdBy: req.query.uid} : {};
      try {
-        res.json(await Post.find(query).populate('createdBy')).populate('comments.createdBy');
+        res.json(await Post.find(query).populate('createdBy'));
      } catch (error) {
         console.log(error)
          res.status(400).json(error);
