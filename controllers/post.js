@@ -75,7 +75,6 @@ async function updateLikes(req, res) {
 async function addComments(req, res) {
    try {
       const post = await Post.findOne({_id: req.params.id});
-      req.body.createdBy = req.user._id;
       post.comments.push(req.body);
       await post.save();
       res.json({msg: "success"});
