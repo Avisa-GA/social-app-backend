@@ -23,7 +23,7 @@ router.get('/api/users/followers', userCtrl.callFollowers);
 router.post('/api/users/signup',isAuthenticated, userCtrl.signUp);
 
 // UnFollow user 
-router.put('api/users/unfollow', isAuthenticated, userCtrl.unfollowUser);
+router.post('api/users/unfollow', isAuthenticated, userCtrl.unfollowUser);
 
 // Following user
 router.post('api/users/follow', isAuthenticated, userCtrl.followUser);
