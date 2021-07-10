@@ -89,6 +89,7 @@ app.use(async (req, res, next) => {
 
 app.use('/', require('./routes/user'));
 app.use('/', require('./routes/post'));
+app.use(express.status('routes'));
 
 ///////////////////////////////
 // LISTENER
@@ -97,4 +98,4 @@ app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));
 
 
 
-// DEPLOYED URL : https://social-full-backend.herokuapp.com/
+// DEPLOYED URL : https://social-app-end.herokuapp.com/api/users
