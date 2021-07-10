@@ -89,7 +89,6 @@ app.use(async (req, res, next) => {
 
 app.use('/', require('./routes/user'));
 app.use('/', require('./routes/post'));
-app.use(express.status('routes'));
 
 ///////////////////////////////
 // LISTENER

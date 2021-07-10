@@ -45,6 +45,7 @@ async function followUser(req, res) {
         const userToFollow = await User.findOne({firebaseUid: req.user.uid }); 
         user.following.push(userToFollow._id);
         await user.save();
+        console.log("I am a user from backend: ", user)
         res.json({message: "success"})
     } catch (error) {
         res.status(400).json(error.message)
