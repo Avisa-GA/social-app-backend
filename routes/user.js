@@ -16,10 +16,17 @@ router.get('/api/users/login',isAuthenticated ,userCtrl.login);
 // get all users
 router.get('/api/users', userCtrl.allUsers);
 
+// get all followers
+router.get('/api/users/followers', userCtrl.callFollowers);
+
 // create a user
 router.post('/api/users/signup',isAuthenticated, userCtrl.signUp);
 
+// UnFollow user 
+router.put('api/users/unfollow', isAuthenticated, userCtrl.unfollowUser);
 
+// Following user
+router.post('api/users/follow', isAuthenticated, userCtrl.followUser);
 
 
 module.exports = router;
