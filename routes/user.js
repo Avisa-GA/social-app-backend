@@ -17,7 +17,7 @@ router.get('/api/users/login',isAuthenticated ,userCtrl.login);
 router.get('/api/users', userCtrl.allUsers);
 
 // get all followers
-router.get('/api/users/followers', userCtrl.callFollowers);
+router.get('/api/users/followers',isAuthenticated, userCtrl.callFollowers);
 
 // create a user
 router.post('/api/users/signup',isAuthenticated, userCtrl.signUp);
