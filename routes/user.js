@@ -17,16 +17,16 @@ router.get('/api/users/login',isAuthenticated ,userCtrl.login);
 router.get('/api/users', userCtrl.allUsers);
 
 // get all followers
-router.get('/api/users/followers',isAuthenticated, userCtrl.callFollowers);
+router.get('/api/users/:id/followers',isAuthenticated, userCtrl.callFollowers);
 
 // create a user
 router.post('/api/users/signup',isAuthenticated, userCtrl.signUp);
 
 // UnFollow user 
-router.post('api/users/unfollow', isAuthenticated, userCtrl.unfollowUser);
+router.post('api/users/:id/unfollow', isAuthenticated, userCtrl.unfollowUser);
 
 // Following user
-router.post('api/users/follow', isAuthenticated, userCtrl.followUser);
+router.post('api/users/:id/follow', isAuthenticated, userCtrl.followUser);
 
 
 module.exports = router;
