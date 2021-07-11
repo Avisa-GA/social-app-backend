@@ -55,8 +55,8 @@ async function followUser(req, res) {
 // unfollow users
 async function unfollowUser(req, res) {
     try {
-       const userToUnfollow = await User.findOne({_id: req.params.id}); 
-       const user = await User.findOne({firebaseUid: req.user.uid }); 
+       const user = await User.findOne({_id: req.params.id}); 
+       const userToUnfollow = await User.findOne({firebaseUid: req.user.uid }); 
        user.following.pull(userToUnfollow._id); 
        await user.save(); // save changes to database
        res.json({msg: "success" }); // send a generic message back 
