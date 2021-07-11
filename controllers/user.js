@@ -41,8 +41,8 @@ async function allUsers(req, res) {
 
 async function followUser(req, res) {
     try {
-        const userToFollow = await User.findOne({_id: req.params.id}); 
-        const user = await User.findOne({firebaseUid: req.user.uid }); 
+        const user = await User.findOne({_id: req.params.id}); 
+        const userToFollow = await User.findOne({firebaseUid: req.user.uid }); 
         user.following.push(userToFollow._id);
         await user.save();
         console.log("I am a user from backend: ", user)
