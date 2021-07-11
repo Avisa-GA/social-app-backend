@@ -41,8 +41,8 @@ async function allUsers(req, res) {
 
 async function followUser(req, res) {
     try {
-        const user = await User.findOne({_id: req.params.id}); 
-        const userToFollow = await User.findOne({firebaseUid: req.user.uid }); 
+        const userToFollow = await User.findOne({_id: req.params.id}); 
+        const user = await User.findOne({firebaseUid: req.user.uid }); 
         user.following.push(userToFollow._id);
         await user.save();
         console.log("I am a user from backend: ", user)
@@ -55,8 +55,8 @@ async function followUser(req, res) {
 // unfollow users
 async function unfollowUser(req, res) {
     try {
-       const user = await User.findOne({_id: req.params.id}); 
-       const userToUnfollow = await User.findOne({firebaseUid: req.user.uid }); 
+       const userToUnfollow = await User.findOne({_id: req.params.id}); 
+       const user = await User.findOne({firebaseUid: req.user.uid }); 
        user.following.pull(userToUnfollow._id); 
        await user.save(); // save changes to database
        res.json({msg: "success" }); // send a generic message back 
@@ -68,7 +68,7 @@ async function unfollowUser(req, res) {
 //  call all followers
 async function callFollowers(req, res) {
     try {
-        const allUsers = await User.findOne({following: [{_id: req.params.id}]});
+        const allUsers = await User.findOne({"following._id": req.params.id});
         res.status(200).json(allUsers);
     } catch (err) {
         res.status(400).json(err.message);
