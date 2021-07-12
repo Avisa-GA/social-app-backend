@@ -15,9 +15,9 @@ module.exports = {
 
 // POST INDEX ROUTE
 async function showPost(req, res) {
-   const query = req.query.uid ? {createdBy: req.query.uid} : {};
+   // const query = req.query.uid ? {createdBy: req.query.uid} : {};
      try {
-        res.json(await Post.find(query).populate('createdBy'));
+        res.json(await Post.find({}).populate('createdBy'));
      } catch (error) {
         console.log(error)
          res.status(400).json(error);
