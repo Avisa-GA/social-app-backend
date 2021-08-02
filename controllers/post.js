@@ -17,7 +17,7 @@ module.exports = {
 async function showPost(req, res) {
    // const query = req.query.uid ? {createdBy: req.query.uid} : {};
      try {
-        res.json(await Post.find({}).populate('createdBy'));
+        res.json(await Post.find({}));
      } catch (error) {
         console.log(error)
          res.status(400).json(error);
@@ -38,8 +38,8 @@ async function deletePost(req, res) {
 // POST CREATE ROUTE
 async function createPost(req, res) {
    try {
-     const user = await User.findOne({firebaseUid: req.user.uid })
-     req.body.createdBy = user._id
+   //   const user = await User.findOne({firebaseUid: req.user.uid })
+   //   req.body.createdBy = user._id
      res.json(await Post.create(req.body));
    } catch (err) {
      res.status(400).json(err);

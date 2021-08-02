@@ -74,19 +74,19 @@ app.get("/", (req, res) => {
 });
 
 // Authorization Middleware
-app.use(async (req, res, next) => {
-  const token = req.get('authorization');
-  if(!token) return next();
-  const authenticatedUser = await admin.auth().verifyIdToken(token.replace('bearer ', ''));
-  if(authenticatedUser) {
-      req.user = authenticatedUser;
-  } else {
-      return res.status(401).json({error: 'invalid authorization token'});
-  }
-  next();
-});
+// app.use(async (req, res, next) => {
+//   const token = req.get('authorization');
+//   if(!token) return next();
+//   const authenticatedUser = await admin.auth().verifyIdToken(token.replace('bearer ', ''));
+//   if(authenticatedUser) {
+//       req.user = authenticatedUser;
+//   } else {
+//       return res.status(401).json({error: 'invalid authorization token'});
+//   }
+//   next();
+// });
 
-app.use('/', require('./routes/user'));
+// app.use('/', require('./routes/user'));
 app.use('/', require('./routes/post'));
 
 ///////////////////////////////
