@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 // **************** Post
 const postSchema = new mongoose.Schema( {
     text: String,
+    likes: [{}],
     imageUrl: String,
 }, { timestamps: true });
 
