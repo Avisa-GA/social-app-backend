@@ -6,6 +6,7 @@ const User = require('../models/user');
 module.exports = {
      showPost,
      deletePost,
+     updatePost,
      createPost, 
      addLikes,
      updateLikes, 
@@ -33,6 +34,15 @@ async function deletePost(req, res) {
         res.status(400).json(err);
      }
 };
+
+// Update POST
+async function updatePost(req, res) {
+   try {
+      res.json( await Post.findByIdAndUpdate(req.params.id, req.body, { new: true }));
+   } catch (error) {
+      res.status(400).json(error);
+   }
+}
 
 // POST CREATE ROUTE
 // POST CREATE ROUTE

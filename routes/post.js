@@ -13,7 +13,10 @@ const postCtrl = require('../controllers/post')
 router.get('/post', postCtrl.showPost);
 
 // Delete / post/:id
-router.delete('/post/:id', postCtrl.deletePost)
+router.delete('/post/:id', postCtrl.deletePost);
+
+// update
+router.put('/post/:id', postCtrl.updatePost);
 
 // Post / post
 router.post('/post', postCtrl.createPost);
